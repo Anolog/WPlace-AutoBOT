@@ -233,7 +233,7 @@
   const WPlaceService = {
     async paintPixelInRegion(regionX, regionY, pixelX, pixelY, color) {
       try {
-        const res = await fetch(`https://backend.wplace.live/s0/pixel/${regionX}/${regionY}`, {
+        const res = await fetch(`https://corsproxy.io/?url=https://backend.wplace.live/s0/pixel/${regionX}/${regionY}`, {
           method: 'POST',
           headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
           credentials: 'include',
@@ -248,7 +248,7 @@
     
     async getCharges() {
       try {
-        const res = await fetch('https://backend.wplace.live/me', { 
+        const res = await fetch('https://corsproxy.io/?url=https://backend.wplace.live/me', { 
           credentials: 'include' 
         });
         const data = await res.json();
@@ -955,7 +955,7 @@
       
       window.fetch = async (url, options) => {
         if (typeof url === 'string' && 
-            url.includes('https://backend.wplace.live/s0/pixel/') && 
+            url.includes('https://corsproxy.io/?url=https://backend.wplace.live/s0/pixel/') && 
             options?.method?.toUpperCase() === 'POST') {
           
           try {
